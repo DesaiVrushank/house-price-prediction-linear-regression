@@ -31,7 +31,7 @@ The dataset contains the following features:
 Additional features created during feature engineering:
 
 * `price_per_sqft`
-* `sqft_per_bedroom`
+* `area_per_bedroom`
 
 > **Note:** `price_per_sqft` is created for feature engineering and analysis, but it is not used as an input feature for predicting `price_lakh` because it directly depends on the target variable and would cause target leakage.
 
@@ -59,13 +59,13 @@ Two additional features were created:
 ### 1. Price Per Square Foot
 
 ```python
-df["price_per_sqft"] = df["price_lakh"] / df["area_sqft"]
+df_clean["price_per_sqft"] = df_clean["price_lakh"] / df_clean["area_sqft"]
 ```
 
-### 2. Square Feet Per Bedroom
+### 2. Area Per Bedroom
 
 ```python
-df["sqft_per_bedroom"] = df["area_sqft"] / df["bedrooms"]
+df_clean["area_per_bedroom"] = df_clean["area_sqft"] / df_clean["bedrooms"]
 ```
 
 For the Linear Regression model, `price_per_sqft` is excluded because it is calculated using the target variable `price_lakh`.
@@ -113,11 +113,11 @@ The final model performance is evaluated using the following metrics:
 
 | Metric            |         Value |
 | ----------------- | ------------: |
-| MAE               | To be updated |
-| MSE               | To be updated |
-| RMSE              | To be updated |
-| R² Score          | To be updated |
-| Adjusted R² Score | To be updated |
+| MAE               | 9.514479833857214 |
+| MSE               | 151.69403283288034 |
+| RMSE              | 12.316413148026513 |
+| R² Score          | 0.8671977686420778 |
+| Adjusted R² Score | 0.8637750307204819 |
 
 > The values above should be updated with the actual results obtained after running the final notebook.
 
